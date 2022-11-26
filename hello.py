@@ -4,12 +4,14 @@
 
 from flask import Flask, request, jsonify
 from boids.boid import Boid
-from archivosMesa.agent import *
-from archivosMesa.model import *
-from archivosMesa.prueba import*
-
 import numpy as np
 import os
+import mesa
+import random
+import matplotlib
+import pandas as pd
+from agent import *
+from model import *
 
 def updatePositions(flock):
     positions = []
@@ -55,8 +57,9 @@ def boidsInit():
     global flock
     if request.method == 'GET':
         # Set the number of agents here:
-        flock = [Boid(*np.random.rand(2)*30, width, height, id) for id in range(20)]
-        return jsonify({"num_agents":30, "w": 30, "h": 30})
+        a = CarModel(5,30,30)
+        flock = [Boid(*vec, width, height, id) for id in range(5)]
+        return jsonify({"num_agents":5, "w": 30, "h": 30})
     elif request.method == 'POST':
         return "Post request from init\n"
 

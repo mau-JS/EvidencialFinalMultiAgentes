@@ -3,8 +3,8 @@ import mesa
 import random
 import matplotlib
 import pandas as pd
-from agent import CarAgent1
 from agent import *
+
 vec = []
 class CarModel(mesa.Model):
     def __init__(self,N,width,height):

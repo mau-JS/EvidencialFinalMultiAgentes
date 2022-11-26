@@ -1,16 +1,15 @@
 from boids.vector import Vector
 import numpy as np
-
+from agent import*
 class Boid():
 
     def __init__(self, x, y, width, height, id):
         self.id = id
         self.position = Vector(x, y)
-        vec = (np.random.rand(2) - 0.5)*10
-        self.velocity = Vector(*vec)
-
-        vec = (np.random.rand(2) - 0.5)/2
-        self.acceleration = Vector(*vec)
+        vect = np.array([0,0])
+        self.velocity = Vector(*vect)
+        vect = np.array([0,0])
+        self.acceleration = Vector(*vect)
         self.max_force = 0.3
         self.max_speed = 5
         self.perception = 100
@@ -19,7 +18,7 @@ class Boid():
         self.height = height
 
     def update(self):
-        self.position += self.velocity
+        self.position += speedGlobal
         self.velocity += self.acceleration
         #limit
         if np.linalg.norm(self.velocity) > self.max_speed:
