@@ -4,6 +4,10 @@
 
 from flask import Flask, request, jsonify
 from boids.boid import Boid
+from archivosMesa.agent import *
+from archivosMesa.model import *
+from archivosMesa.prueba import*
+
 import numpy as np
 import os
 
